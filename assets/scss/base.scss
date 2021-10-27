@@ -1,26 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+@mixin greencolor {
+    background-color: rgb(216, 247, 216);
+}
+@mixin shadow {
+    -webkit-box-shadow: 0px 9px 15px -6px rgba(0,0,0,0.68); 
+    box-shadow: 0px 9px 15px -6px rgba(0,0,0,0.68);
+}
+@mixin transactionstyle {
+    border-bottom: solid 1px grey;
+        padding:3%;
+        :first-child {
+            font-weight: bold;
+        }
+}
 body {
     font-family: 'Montserrat', sans-serif;
 }
-nav {
-    background-color: rgba(144, 238, 144, 0.438);
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include greencolor();
+    @include shadow();
+    position: sticky;
+    top:0%;
+    z-index: 10;
     img {
         padding:3%;
         width: 10%;
     }
-    ul{
-        float: right;
-        padding:3%;
-        li {
-            list-style: none;
-            a {
-                text-decoration: none;
-                color: blue;
+    nav {
+        width: 100%;
+        height: 8vh;
+        ul{
+            display: inline;
+            padding:3%;
+            
+            li {
+                list-style: none;
+                margin:0 5% 0 5%;
+                a {
+                    text-decoration: none;
+                    color: blue;
+                }
+                button {
+                    float: right;
+                }
             }
         }
     }
 }
+#main {
+    height: 30vh;
+    text-align: center;
+    margin:5%;
+    background-image: url('/assets/images/113750.jpg');
+    background-size: cover;
+    @include shadow();
+}
+.tabsection {
+    position: relative;
+    position: sticky;
+    top:8%;
+    display: flex;
+    justify-content:space-evenly;
+    @include greencolor();
+    width: 90%;
+    margin: auto;
+    margin-bottom: 7%;
+    @include shadow();
+    button {
+        margin:3%;
+        background-color: transparent;
+        border: solid 1px gray;
+    }
+}
+#addbutton {
+    position: absolute;
+    right: 10%;
+    top: 90%;
+    @include greencolor();
+    border-radius: 50%;
+    font-weight: bold;
+    margin:3%;
+}
+#allTransactions, #Income, #Expenses {
+    width: 90%;
+    margin: auto;
+    .transaction {
+        @include transactionstyle();
+    }
+}
+
 footer {
     img {
         display: block;
@@ -29,3 +101,40 @@ footer {
         width: 10%;
     }
 }
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
