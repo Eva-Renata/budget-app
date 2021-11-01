@@ -1,14 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+html {
+  height: 100%;
+}
+
 body {
   background-color: rgba(255, 255, 255, 0.603);
   font-family: 'Montserrat', sans-serif;
+  position: relative;
+  display: block;
+  height: 100%;
 }
 
 h1 {
   text-align: center;
   font-style: italic;
-  margin-top: 30%;
-  padding-bottom: 10%;
 }
 
 .formdiv {
@@ -17,10 +22,20 @@ h1 {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+  max-width: 400px;
+  max-height: 200px;
+  position: absolute;
+  margin: -200px 0 0  -200px;
+  left: 50%;
+  top: 50%;
+}
+
+.formdiv form label {
+  display: none;
 }
 
 .formdiv form input {
-  width: 50%;
+  width: 75%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 8px;
@@ -31,10 +46,19 @@ h1 {
 }
 
 .formdiv form button {
-  width: 55%;
+  width: 75%;
   padding: 8px;
   margin: 10px 0;
   background-color: transparent;
   border-color: #05eb05;
   border-radius: 5px;
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    margin-top: 5%;
+  }
+  .formdiv form label {
+    display: block;
+  }
 }

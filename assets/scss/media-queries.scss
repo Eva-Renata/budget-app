@@ -1,0 +1,51 @@
+@import './base.scss' ; 
+
+@media screen and (min-width: 1000px) {
+
+    body{
+        grid-template-areas: 'head head'
+                            "main tabs"
+                            "footer footer";
+        display: grid;
+        grid-template-rows: 100px 1fr 30px;
+        grid-template-columns: 1fr 1fr;
+        gap: 7vh;
+    }
+    .tabsection{
+        position: static;
+        top: 0;
+    }
+    .tabcontent {
+        height: 56vh;
+    }  
+    section {
+        margin: 0;
+    }
+    #main {
+        margin: 0;
+        position: relative;
+        #balance {
+            font-size: 3vh;
+            background-color: rgb(216, 247, 216);
+        }
+    }
+
+    #myForm.form-popup {
+        width: 90%;
+        margin: auto;
+        @include formStyles(); 
+        
+        form{
+            padding-bottom:10px;
+        }
+    }
+    #addbutton {
+        display: none;
+    }
+    footer{
+        h1{
+            margin-top: 2%;
+        }
+    }
+     
+}

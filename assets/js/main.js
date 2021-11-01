@@ -3,20 +3,20 @@ const mainSection = document.getElementById('main');
 const allTransactions = document.getElementById('allTransactions');
 const incomeTransactions = document.getElementById('Income');
 const expensesTransactions = document.getElementById('Expenses');
+const balanceElement = document.getElementById('balance');
 
-
+//if we are not logged in, we are redirected to login.html
 if(!loggedIn) {
     window.location = 'login.html';
 }
-const userData = JSON.parse(loggedIn);
-const account = getUserAccount(userData.email);
+const account = getUserAccount(loggedIn.email);
+userNameElement.innerHTML= 'Hello, '+loggedIn.name;
 
-userNameElement.innerHTML= 'Hello, '+userData.name  +
-    "<button onclick='logout()'>Logout</button>";
+balanceElement.innerText = account.balance;
+renderAllTransactions(account.transactions);
 
-mainSection.innerText = "Your balance is : " + account.balance;
 function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
+    let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
@@ -27,7 +27,7 @@ function openTab(evt, tabName) {
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
-  }
+}
 
 // const transactions = {
 //    0 : { 

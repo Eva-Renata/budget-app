@@ -7,195 +7,57 @@
     <title>Budget app</title>
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/media-queries.css">
     <script src="assets/js/helpers.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/addform.js" defer></script>
 </head>
 <body>
     <header>
         <img src="assets/images/pngegg.png" alt="">
-        <nav>
-            <ul>
-                <li id='userName'></li>
-            </ul>
-        </nav>
+        <span id='userName'></span>
+        <button onclick='logout()'>Logout</button>
     </header>
-    <section id='main'></section>
-    <section >
+    <section id='main'>
+        <h2>Your Balance is: <span id="balance"></span></h2>
+        <img id="piechart" src="assets/images/pie.png">
+
+        <!-- form begins that will open popup in middle of page on mobile -->
+        <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h2>Add</h2>
+                <select name="type" id="type" required>
+                    <option value="">Select type</option>
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+                <input type="text" name='category' placeholder="Category" required>
+                <input type="number" name='amount' placeholder="Amount" required min="1">
+                  <br>  
+                <button type="submit" class="btn" id="submitbtn">Save</button>
+                
+            </form>
+        </div>
+        <!-- form ends -->
+
+    </section>
+    
+    <section id="tabs" >
+        <!-- button to open the form on mobile -->
+        <button class="openaddform" id="addbutton" onclick="toggle();">+</button>
+        <!-- button to open the form on mobile -->
+
         <div class="tabsection">
             <button class="tablinks active" onclick="openTab(event, 'allTransactions')">All</button>
             <button class="tablinks" onclick="openTab(event, 'Income')">Income</button>
             <button class="tablinks" onclick="openTab(event, 'Expenses')">Expenses</button>
-            <button id="addbutton">+</button>
         </div>
         <div id="allTransactions" class="tabcontent" style="display: block;">
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
-            <div class="transaction">
-                <span>category agag</span>
-                <span style="float:right">type expense or income</span>
-                <br>
-                <span>amount dkk</span>
-            </div>
         </div>
           
-        <div id="Income" class="tabcontent">
-            <div class="transaction">
-                <span>Salary</span>
-                <span style="float:right">income</span>
-                <br>
-                <span>10.000 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Salary</span>
-                <span style="float:right">income</span>
-                <br>
-                <span>10.000 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Salary</span>
-                <span style="float:right">income</span>
-                <br>
-                <span>10.000 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Salary</span>
-                <span style="float:right">income</span>
-                <br>
-                <span>10.000 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Salary</span>
-                <span style="float:right">income</span>
-                <br>
-                <span>10.000 dkk</span>
-            </div> 
-        </div>
-          
-        <div id="Expenses" class="tabcontent">
-            <div class="transaction">
-                <span>Groceries</span>
-                <span style="float:right">expenses</span>
-                <br>
-                <span>250 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Groceries</span>
-                <span style="float:right">expenses</span>
-                <br>
-                <span>250 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Groceries</span>
-                <span style="float:right">expenses</span>
-                <br>
-                <span>250 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Groceries</span>
-                <span style="float:right">expenses</span>
-                <br>
-                <span>250 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Groceries</span>
-                <span style="float:right">expenses</span>
-                <br>
-                <span>250 dkk</span>
-            </div> 
-            <div class="transaction">
-                <span>Groceries</span>
-                <span style="float:right">expenses</span>
-                <br>
-                <span>250 dkk</span>
-            </div> 
-        </div>
-        
     </section>
-    
     <footer>
-        <!-- <img src="assets/images/pngegg.png" alt=""> -->
+        <h1>YOUR BUDGET APP</h1>
     </footer>
 </body>
 </html>

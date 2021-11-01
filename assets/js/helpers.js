@@ -26,7 +26,8 @@ function isValidLength(value, min, max) {
 }
 
 function getLoggedInUser(){
-    return localStorage.getItem('loggedIn');
+    //parse it means to turn your JSON string back to original value
+    return JSON.parse(localStorage.getItem('loggedIn'));
 }
 
 function loginUser(email,name){
@@ -58,18 +59,20 @@ function getUserAccount(email){
     return accounts[email];
 }
 
+//here we are specifying how the account should look
 function createUserAccount(userData){
-    // new user account template
-    const account = {
+    // new account account template
+    const newAccount = {
         email : userData.email,
         name: userData.name,
         balance: 0,
         income: 0,
         expenses: 0,
-        transactions: {}
+        transactions: []
     }
     const accounts = getAllAccounts();
-    accounts[userData.email] = account;
+    //we want to add the e-mail from the userData, into the new object we created *newAccount
+    accounts[userData.email] = newAccount;
     localStorage.setItem('accounts', JSON.stringify(accounts));
 }
 
@@ -92,3 +95,30 @@ function initalizeAccounts(){
     localStorage.setItem('accounts', JSON.stringify({}))
 }
 
+function getAllTransactions(){
+    return account.transactions;
+}
+function renderTransaction(transaction) {
+    // const transEleemnt = document.createElement('div');
+    // transEleemnt.classList = 'transaction';
+    
+    const element = document.createElement('template');
+    element.innerHTML =  `<div class="transaction">
+        <span>${transaction.category}</span>
+        <span style="float:right">${transaction.type}</span>
+        <br>
+        <span>${transaction.amount} dkk</span>
+        </div>`;
+allTransactions.insertAdjacentElement('afterbegin', element.content.firstChild)
+}
+
+function renderAllTransactions(transactions){
+    transactions.forEach( transaction => {
+        renderTransaction(transaction);
+    });
+    // the same thing. Above we use the new arrow function
+    // transactions.forEach( function(transaction) {
+    //     renderTransaction(transaction);
+
+    // })
+}

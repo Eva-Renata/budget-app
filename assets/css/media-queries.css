@@ -205,3 +205,69 @@ footer img {
   padding: 3%;
   width: 50%;
 }
+
+@media screen and (min-width: 1000px) {
+  body {
+        grid-template-areas: 'head head' "main tabs" "footer footer";
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 100px 1fr 30px;
+        grid-template-rows: 100px 1fr 30px;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    gap: 7vh;
+  }
+  .tabsection {
+    position: static;
+    top: 0;
+  }
+  .tabcontent {
+    height: 56vh;
+  }
+  section {
+    margin: 0;
+  }
+  #main {
+    margin: 0;
+    position: relative;
+  }
+  #main #balance {
+    font-size: 3vh;
+    background-color: #d8f7d8;
+  }
+  #myForm.form-popup {
+    width: 90%;
+    margin: auto;
+    outline: none;
+    background-color: #d8f7d8;
+    border: 1px solid grey;
+  }
+  #myForm.form-popup form {
+    padding: 0 10% 10% 10%;
+  }
+  #myForm.form-popup form select {
+    width: 90%;
+  }
+  #myForm.form-popup form input {
+    width: 80%;
+    margin-top: 5px;
+  }
+  #myForm.form-popup form #submitbtn {
+    margin-top: 5px;
+    background-color: white;
+    border: solid 1px #05eb05;
+  }
+  #myForm.form-popup form #submitbtn:hover {
+    background-color: white;
+    border-color: black;
+  }
+  #myForm.form-popup form {
+    padding-bottom: 10px;
+  }
+  #addbutton {
+    display: none;
+  }
+  footer h1 {
+    margin-top: 2%;
+  }
+}
