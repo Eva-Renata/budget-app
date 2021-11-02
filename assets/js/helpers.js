@@ -108,7 +108,8 @@ function renderTransaction(transaction) {
         <span style="float:right">${transaction.type}</span>
         <br>
         <span>${transaction.amount} dkk</span>
-        </div>`;
+        </div>
+        <span>delete</span>`;
 allTransactions.insertAdjacentElement('afterbegin', element.content.firstChild)
 }
 
@@ -116,9 +117,4 @@ function renderAllTransactions(transactions){
     transactions.forEach( transaction => {
         renderTransaction(transaction);
     });
-    // the same thing. Above we use the new arrow function
-    // transactions.forEach( function(transaction) {
-    //     renderTransaction(transaction);
-
-    // })
 }

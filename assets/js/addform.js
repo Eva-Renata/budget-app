@@ -10,8 +10,11 @@ function toggle(){
 transactionForm.addEventListener('submit', (event) => {
     event.preventDefault();
     if(!validateTransaction(transactionForm)){
-        // TODO DISPAY ERROR
-    }
+    //     document.getElementById('errormessage').innerHTML = "Succesfully added!";
+    // }else 
+    // {
+    //     document.getElementById('errormessage').innerHTML = "Please fill up the form";
+     }
     const transaction = {
         type: transactionForm.type.value,
         category: transactionForm.category.value,
@@ -30,9 +33,9 @@ transactionForm.addEventListener('submit', (event) => {
 })
 
 // TODO FOR EVA VALIDATION
-function validateTransaction(form) {
-    return true;
-}
+// function validateTransaction() {
+//     if (category.value === '' || category.value == null)
+// }
 
 function saveTransaction(transaction){
 

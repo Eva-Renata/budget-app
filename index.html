@@ -24,8 +24,9 @@
 
         <!-- form begins that will open popup in middle of page on mobile -->
         <div class="form-popup" id="myForm">
-            <form action="/action_page.php" class="form-container">
+            <form action="/action_page.php" class="form-container" onsubmit="validateTransaction()">
                 <h2>Add</h2>
+                <span id="errormessage" style="color:red">Errorplace</span>
                 <select name="type" id="type" required>
                     <option value="">Select type</option>
                     <option value="expense">Expense</option>
@@ -34,7 +35,7 @@
                 <input type="text" name='category' placeholder="Category" required>
                 <input type="number" name='amount' placeholder="Amount" required min="1">
                   <br>  
-                <button type="submit" class="btn" id="submitbtn">Save</button>
+                <button type="submit" class="btn" id="submitbtn" >Save</button>
                 
             </form>
         </div>
