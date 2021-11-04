@@ -24,7 +24,6 @@
             border-color: black;
         }
 }
-
 @mixin formStyles {
     outline: none;
     background-color: rgb(216, 247, 216);
@@ -74,9 +73,18 @@ header {
         float: right;
         @include button;
     }
-
-
 }
+//chart styling
+#mychartdiv {
+    min-width: none;
+    max-width: 600px;
+    margin: auto;
+    canvas#myChart {
+        margin: auto;
+        max-width: 600px;
+    }
+}
+
 #tabs {
     grid-area: 'tabs';
 }
@@ -134,7 +142,7 @@ header {
         }
     }
 }
-
+//addbutton visible only on mobile
 #addbutton {
     position: fixed;
     right: 5%;
@@ -147,27 +155,37 @@ header {
         border-color: 1px solid black;
     }
 }
+
 // style of form for adding new expense/income
+//mobile first
 @media  screen and (max-width: 800px) {
-    
-.form-popup.active {
-    visibility: visible;
+    .form-popup.active {
+        visibility: visible;
+    }
+    .form-popup {
+        visibility: hidden;
+        top:80%;
+        left:45%;
+        transform: translate(-50%,-50%);
+        z-index: 2;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin:auto;
+        position: fixed;
+        outline: none;
+        @include formStyles();
+    }
 }
-.form-popup {
-    visibility: hidden;
-    top:80%;
-    left:45%;
-    transform: translate(-50%,-50%);
-    z-index: 2;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    margin:auto;
-    position: fixed;
-    outline: none;
-    @include formStyles();
+
+//delete transaction 'button'
+.deleteBtn {
+    float:right;
+    cursor: pointer;
+    background-color: white;
+    color:#eb0505;
 }
-}
+//footer styling
 footer { 
     grid-area: footer;
     text-align: center;

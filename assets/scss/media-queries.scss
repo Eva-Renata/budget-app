@@ -1,7 +1,23 @@
-@import './base.scss' ; 
+@import 'base.scss' ; 
 
+//TABLET
+@media screen and (min-width: 800px)and (max-width: 1000px) {
+    #myForm.form-popup {
+        width: 80%;
+        margin: auto;
+        @include formStyles(); 
+
+        form{
+            padding-bottom:10px;
+        }
+    }
+    #addbutton {
+        display: none;
+    }
+}
+//DESKTOP
 @media screen and (min-width: 1000px) {
-
+ //we are positioning elements on desktop version with grid area
     body{
         grid-template-areas: 'head head'
                             "main tabs"
@@ -12,8 +28,8 @@
         gap: 7vh;
     }
     .tabsection{
-        position: static;
-        top: 0;
+        position: relative;
+        position: sticky;
     }
     .tabcontent {
         height: 56vh;
@@ -29,12 +45,10 @@
             background-color: rgb(216, 247, 216);
         }
     }
-
     #myForm.form-popup {
         width: 90%;
         margin: auto;
         @include formStyles(); 
-        
         form{
             padding-bottom:10px;
         }
@@ -47,5 +61,4 @@
             margin-top: 2%;
         }
     }
-     
 }

@@ -43,6 +43,17 @@ header button:hover {
   border-color: black;
 }
 
+#mychartdiv {
+  min-width: none;
+  max-width: 600px;
+  margin: auto;
+}
+
+#mychartdiv canvas#myChart {
+  margin: auto;
+  max-width: 600px;
+}
+
 #tabs {
   grid-area: 'tabs';
 }
@@ -177,6 +188,13 @@ header button:hover {
     background-color: white;
     border-color: black;
   }
+}
+
+.deleteBtn {
+  float: right;
+  cursor: pointer;
+  background-color: white;
+  color: #eb0505;
 }
 
 footer {

@@ -1,6 +1,8 @@
 // get logged in user information
 const loggedIn = getLoggedInUser();
-    // Herunder kommer den kode der måler mønstre. fx @, tal mm (SIDE FUNKTIONER)
+
+//VALIDATION TEMPLATE
+// Herunder kommer den kode der måler mønstre. fx @, tal mm (SIDE FUNKTIONER)
 //Tjekker om værdi er et nummer
 function isValidNumber(value) {
     let pattern = /^[0-9]+$/;
@@ -26,7 +28,7 @@ function isValidLength(value, min, max) {
 }
 
 function getLoggedInUser(){
-    //parse it means to turn your JSON string back to original value
+    //parse - turning your JSON string back to original value
     return JSON.parse(localStorage.getItem('loggedIn'));
 }
 
@@ -36,8 +38,7 @@ function loginUser(email,name){
         email: email
     }
     // we save in local storage as JSON string
-    // we cannot save objects in local storage
-    // only strings
+    // we cannot save objects in local storage, only strings
     localStorage.setItem('loggedIn', JSON.stringify(user));
 
     // check if we have user account with that email
@@ -53,7 +54,7 @@ function logout() {
     window.location = 'login.html';
 }
 
-// find user accoutn by email
+// find user account by email
 function getUserAccount(email){
     const accounts = getAllAccounts();
     return accounts[email];
@@ -90,7 +91,7 @@ function getAllAccounts() {
         return accounts;
     }
 }
-
+//we transform the account object into a string, to save it in localstorage
 function initalizeAccounts(){
     localStorage.setItem('accounts', JSON.stringify({}))
 }
@@ -98,23 +99,58 @@ function initalizeAccounts(){
 function getAllTransactions(){
     return account.transactions;
 }
-function renderTransaction(transaction) {
+//we are displaying all transactions
+function renderTransaction(transaction, index) {
     // const transEleemnt = document.createElement('div');
     // transEleemnt.classList = 'transaction';
     
+    //creating a template how they should be shown
     const element = document.createElement('template');
     element.innerHTML =  `<div class="transaction">
         <span>${transaction.category}</span>
         <span style="float:right">${transaction.type}</span>
         <br>
         <span>${transaction.amount} dkk</span>
+        <span class='deleteBtn' onclick="deletetransaction(event, ${index})" >delete</span>
         </div>
-        <span>delete</span>`;
-allTransactions.insertAdjacentElement('afterbegin', element.content.firstChild)
+       `;
+    allTransactions.insertAdjacentElement('afterbegin', element.content.firstChild)
 }
 
-function renderAllTransactions(transactions){
-    transactions.forEach( transaction => {
-        renderTransaction(transaction);
+function renderAllTransactions(transactions, type = 'all') {
+    allTransactions.innerHTML = '';
+    transactions.forEach( (transaction, index) => {
+        if(transaction.type === type || type === 'all') {
+            renderTransaction(transaction, index);
+        }
     });
+}
+// make deleteTransaction function
+// put it onclick on the delete button
+// send the transaction index to the function
+
+function deletetransaction(event , index) {
+    const clickedBtn = event.currentTarget;
+    const parent = clickedBtn.closest('.transaction');
+    parent.remove();
+
+    //splice -> we name first where the deleting begins (from index) and how many should be deleted 
+    const transaction = account.transactions.splice(index,1)[0];
+    //we update our balance
+    account.balance -= transaction.amount;
+    //if the transaction is in expense type than it is - negative, or else it\s income
+    if(transaction.type == 'expense'){
+        account.expenses -= transaction.amount;
+    } else {
+        account.income -= transaction.amount;
+    }
+    //we update our balance (interface)
+    balanceElement.innerText = account.balance;
+
+    //we save our account in database
+    const accounts = getAllAccounts();
+    accounts[account.email] = account;
+    localStorage.setItem('accounts', JSON.stringify(accounts))
+    transactionForm.reset();
+    updateChart();
 }

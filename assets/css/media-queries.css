@@ -43,6 +43,17 @@ header button:hover {
   border-color: black;
 }
 
+#mychartdiv {
+  min-width: none;
+  max-width: 600px;
+  margin: auto;
+}
+
+#mychartdiv canvas#myChart {
+  margin: auto;
+  max-width: 600px;
+}
+
 #tabs {
   grid-area: 'tabs';
 }
@@ -179,6 +190,13 @@ header button:hover {
   }
 }
 
+.deleteBtn {
+  float: right;
+  cursor: pointer;
+  background-color: white;
+  color: #eb0505;
+}
+
 footer {
   grid-area: footer;
   text-align: center;
@@ -206,6 +224,41 @@ footer img {
   width: 50%;
 }
 
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  #myForm.form-popup {
+    width: 80%;
+    margin: auto;
+    outline: none;
+    background-color: #d8f7d8;
+    border: 1px solid grey;
+  }
+  #myForm.form-popup form {
+    padding: 0 10% 10% 10%;
+  }
+  #myForm.form-popup form select {
+    width: 90%;
+  }
+  #myForm.form-popup form input {
+    width: 80%;
+    margin-top: 5px;
+  }
+  #myForm.form-popup form #submitbtn {
+    margin-top: 5px;
+    background-color: white;
+    border: solid 1px #05eb05;
+  }
+  #myForm.form-popup form #submitbtn:hover {
+    background-color: white;
+    border-color: black;
+  }
+  #myForm.form-popup form {
+    padding-bottom: 10px;
+  }
+  #addbutton {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 1000px) {
   body {
         grid-template-areas: 'head head' "main tabs" "footer footer";
@@ -218,8 +271,9 @@ footer img {
     gap: 7vh;
   }
   .tabsection {
-    position: static;
-    top: 0;
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
   }
   .tabcontent {
     height: 56vh;
