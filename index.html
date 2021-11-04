@@ -7,23 +7,58 @@
     <title>Budget app</title>
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/media-queries.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/helpers.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/addform.js" defer></script>
 </head>
 <body>
     <header>
-        <nav>
-            <img src="assets/images/pngegg.png" alt="">
-            <ul>
-                <li id='userName'>
-
-                </li>
-            </ul>
-        </nav>
+        <img src="assets/images/pngegg.png" alt="">
+        <span id='userName'></span>
+        <button onclick='logout()'>Logout</button>
     </header>
-    <section id='main'></section>
+    <section id='main'>
+        <h2>Your Balance is: <span id="balance"></span></h2>
+        <div id="mychartdiv">
+            <canvas id="myChart"></canvas>
+        </div>
+        <!-- form begins that will open popup in middle of page on mobile , on tablet,desktop is there by default-->
+        <div class="form-popup" id="myForm">
+            <form class="form-container" id="addform" >
+                <h2>Add</h2>
+                <span id="errormessage" style="color:red"></span>
+                <span id="successmessage" style ="color:green"></span>
+                <select name="type" id="type" >
+                    <option value="">Select type</option>
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+                <input type="text" name='category' id="category" placeholder="Category" >
+                <input type="number" name='amount' id="amount" placeholder="Amount"  min="1">
+                  <br>  
+                <button type="submit" class="btn" id="submitbtn" >Save</button>
+            </form>
+        </div>
+        <!-- form ends -->
+    </section>
+    
+    <section id="tabs" >
+        <!-- button to open the form. visible only on mobile -->
+        <button class="openaddform" id="addbutton" onclick="toggle();">+</button>
+        <!-- button to open the form -->
+
+        <div class="tabsection">
+            <button class="tablinks active" filter='all' >All</button>
+            <button class="tablinks" filter='income'>Income</button>
+            <button class="tablinks" filter='expense'>Expenses</button>
+        </div>
+        <div id="allTransactions" class="tabcontent" style="display: block;"></div>
+
+    </section>
     <footer>
-        <!-- <img src="assets/images/pngegg.png" alt=""> -->
+        <h1>YOUR BUDGET APP</h1>
     </footer>
 </body>
 </html>

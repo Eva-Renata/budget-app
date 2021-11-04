@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 body {
   font-family: 'Montserrat', sans-serif;
   margin: auto;
@@ -42,6 +41,17 @@ header button {
 header button:hover {
   background-color: white;
   border-color: black;
+}
+
+#mychartdiv {
+  min-width: none;
+  max-width: 600px;
+  margin: auto;
+}
+
+#mychartdiv canvas#myChart {
+  margin: auto;
+  max-width: 600px;
 }
 
 #tabs {
@@ -180,6 +190,13 @@ header button:hover {
   }
 }
 
+.deleteBtn {
+  float: right;
+  cursor: pointer;
+  background-color: white;
+  color: #eb0505;
+}
+
 footer {
   grid-area: footer;
   text-align: center;
@@ -207,77 +224,104 @@ footer img {
   width: 50%;
 }
 
-.deleteBtn {
-  float: right;
-  cursor: pointer;
-  background-color: white;
-  color: #eb0505;
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  background-color: rgba(255, 255, 255, 0.603);
-  font-family: 'Montserrat', sans-serif;
-  position: relative;
-  display: block;
-  height: 100%;
-}
-
-h1 {
-  text-align: center;
-  font-style: italic;
-}
-
-.formdiv {
-  display: block;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
-  max-width: 400px;
-  max-height: 200px;
-  position: absolute;
-  margin: -200px 0 0  -200px;
-  left: 50%;
-  top: 50%;
-}
-
-.formdiv form label {
-  display: none;
-}
-
-.formdiv form input {
-  width: 75%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 8px;
-  margin: 8px 0;
-  border-radius: 10px;
-  background-color: transparent;
-  text-align: center;
-}
-
-.formdiv form button {
-  width: 75%;
-  padding: 8px;
-  margin: 10px 0;
-  background-color: white;
-  border: solid 1px #05eb05;
-}
-
-.formdiv form button:hover {
-  background-color: white;
-  border-color: black;
-}
-
-@media screen and (min-width: 800px) {
-  h1 {
-    margin-top: 5%;
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  #myForm.form-popup {
+    width: 80%;
+    margin: auto;
+    outline: none;
+    background-color: #d8f7d8;
+    border: 1px solid grey;
   }
-  .formdiv form label {
-    display: block;
+  #myForm.form-popup form {
+    padding: 0 10% 10% 10%;
+  }
+  #myForm.form-popup form select {
+    width: 90%;
+  }
+  #myForm.form-popup form input {
+    width: 80%;
+    margin-top: 5px;
+  }
+  #myForm.form-popup form #submitbtn {
+    margin-top: 5px;
+    background-color: white;
+    border: solid 1px #05eb05;
+  }
+  #myForm.form-popup form #submitbtn:hover {
+    background-color: white;
+    border-color: black;
+  }
+  #myForm.form-popup form {
+    padding-bottom: 10px;
+  }
+  #addbutton {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+        grid-template-areas: 'head head' "main tabs" "footer footer";
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 100px 1fr 30px;
+        grid-template-rows: 100px 1fr 30px;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    gap: 7vh;
+  }
+  .tabsection {
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
+  }
+  .tabcontent {
+    height: 56vh;
+  }
+  section {
+    margin: 0;
+  }
+  #main {
+    margin: 0;
+    position: relative;
+  }
+  #main #balance {
+    font-size: 3vh;
+    background-color: #d8f7d8;
+  }
+  #myForm.form-popup {
+    width: 90%;
+    margin: auto;
+    outline: none;
+    background-color: #d8f7d8;
+    border: 1px solid grey;
+  }
+  #myForm.form-popup form {
+    padding: 0 10% 10% 10%;
+  }
+  #myForm.form-popup form select {
+    width: 90%;
+  }
+  #myForm.form-popup form input {
+    width: 80%;
+    margin-top: 5px;
+  }
+  #myForm.form-popup form #submitbtn {
+    margin-top: 5px;
+    background-color: white;
+    border: solid 1px #05eb05;
+  }
+  #myForm.form-popup form #submitbtn:hover {
+    background-color: white;
+    border-color: black;
+  }
+  #myForm.form-popup form {
+    padding-bottom: 10px;
+  }
+  #addbutton {
+    display: none;
+  }
+  footer h1 {
+    margin-top: 2%;
   }
 }
